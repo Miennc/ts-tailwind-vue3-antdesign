@@ -2,19 +2,20 @@
 import {MenuUnfoldOutlined, MenuFoldOutlined} from "@ant-design/icons-vue";
 import {computed, onBeforeMount, onMounted, ref, watch} from "vue";
 import {useRoute, useRouter} from "vue-router";
+import Dropdown from "@/components/ui/Dropdown.vue"
 
 const router = useRouter();
 const route = useRoute();
-const selectedKeys = ref<any[]>(["/home/"]);
+const selectedKeys = ref<any[]>(["/"]);
 const collapsed = ref<boolean>(false);
 const openKeys = ref<string[]>([]);
 
 
 const dataSliderBar = ref<any[]>([
   {
-    key: "/home",
+    key: "/",
     requiredRole: false,
-    name: "Home",
+    name: "계정 관리",
     children: [],
   },
   {
@@ -22,7 +23,7 @@ const dataSliderBar = ref<any[]>([
     name: "DashBoardManagement",
     children: [
       {
-        key: "",
+        key: "/geger",
         name: "내부직원 계정관리",
       },
       {
@@ -59,6 +60,7 @@ const checkSelectedSidleBar = () => {
 
 onMounted(() => {
   checkSelectedSidleBar();
+  selectedKeys.value = ["/"];
 });
 
 watch(
@@ -97,6 +99,8 @@ watch(
           </div>
         </router-link>
       </div>
+
+      <Dropdown/>
 
       <a-menu
           id="menu"
@@ -214,7 +218,7 @@ watch(
 
 /* Nền khi menu item được kích hoạt */
 .ant-menu-item-selected {
-  background-color: #312e81 !important;
+  background-color: #525ead  !important;
   color: #FFFFFF !important; /* Màu sắc chữ khi kích hoạt */
 }
 
