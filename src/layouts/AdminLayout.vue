@@ -10,7 +10,7 @@ const router = useRouter();
 const route = useRoute();
 const selectedKeys = ref<any[]>(["/"]);
 const collapsed = ref<boolean>(false);
-const openKeys = ref<string[]>([]);
+const openKeys = ref<string[]>([""]);
 
 
 const dataSliderBar = ref<any[]>([
@@ -26,11 +26,11 @@ const dataSliderBar = ref<any[]>([
     icon: subMenu1,
     children: [
       {
-        key: "",
+        key: "/account/admin",
         name: "관리자",
       },
       {
-        key: "account/user",
+        key: "/account/user",
         name: "사용자",
       },
     ],
@@ -76,22 +76,13 @@ const logout = () => {
 
 
 const checkSelectedSidleBar = () => {
-  if (route.meta.child) {
-    selectedKeys.value = [
-      route?.fullPath?.substring(0, route?.fullPath?.lastIndexOf("/")),
-    ];
-    openKeys.value = [route?.fullPath?.split("/").slice(0, 3).join("/")];
-  } else {
-    selectedKeys.value = [route?.fullPath];
-    openKeys.value = [
-      route?.fullPath?.substring(0, route?.fullPath?.lastIndexOf("/")),
-    ];
-  }
+  selectedKeys.value = [route?.fullPath];
+  openKeys.value = [
+    route?.fullPath?.substring(0, route?.fullPath?.lastIndexOf("/")),
+  ];
 };
-
 onMounted(() => {
   checkSelectedSidleBar();
-  selectedKeys.value = ["/"];
 });
 
 watch(

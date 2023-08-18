@@ -19,20 +19,19 @@ const router = createRouter({
             component: AdminLayout,
             children: [
                 {
-                    path: '',
+                    path: '/account/admin',
                     name: 'admin',
                     component: Admin,
                     meta: {child: true},
                 },
                 {
-                    path: '',
+                    path: '/account/user',
                     name: 'user',
                     component: User,
                     meta: {child: true},
                 }
             ]
         },
-
     ]
 })
 

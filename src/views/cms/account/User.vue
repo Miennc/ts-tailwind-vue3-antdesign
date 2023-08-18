@@ -2,6 +2,11 @@
 import type {DataAdd} from "@/interfaces/DataAdd.ts";
 import {demoServices} from "@/services/demoServices";
 import {computed, onBeforeMount, onMounted, ref, watch} from "vue";
+import iconClose from '@/assets/images/cms/account/admin/icon_close.svg'
+import FormAdmin from "@/components/form/cms/account/FormAdmin.vue";
+import {adminStore} from "@/stores/cms/account/admin.store.ts";
+
+const storeAdmin = adminStore();
 const current1 = ref<number>(1);
 
 const addDemo = async () => {
@@ -16,13 +21,18 @@ const onChange = (pageNumber: number) => {
   console.log('Page: ', pageNumber);
 };
 
+const showModalAddAdmin = () => {
+  storeAdmin.setOpenModalAddAdmin(true);
+};
+
+
 </script>
 
 <template>
 
   <div class="relative ">
     <div class="bg-[#ffffff] py-[28px] text-[#343436] font-[700] text-[24px] ">
-      사용자 관리
+      사용자 관리 userrrr
     </div>
     <div class="h-[2px]  absolute left-[-30px] right-[-30px] bg-[#ECEFF2]">
 
@@ -32,6 +42,33 @@ const onChange = (pageNumber: number) => {
       사용자 목록
     </div>
 
+
+    <div class="flex justify-between items-center mb-[20px]">
+      <div class="w-[327px] h-[48px] relative">
+        <input type="text"
+               class="w-full h-full  rounded-[8px] outline-none pl-[16px] placeholder:text-[#A1A5AA] placeholder:font-[500]"
+               placeholder="관리자를 검색해주세요"
+               style="border: 1px solid #CCCFD3"
+        >
+        <div class="absolute right-[20px] top-[0.9rem]">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M19 19L14.6569 14.6569M14.6569 14.6569C16.1046 13.2091 17 11.2091 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17C11.2091 17 13.2091 16.1046 14.6569 14.6569Z"
+                stroke="#343436" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+
+        </div>
+      </div>
+
+
+      <div>
+        <button @click="showModalAddAdmin"
+                class="w-[120px] h-[40px] rounded-[32px] bg-[#1D223E] text-[#FFFFFF] font-[500] text-[14px] leading-[20px] outline-none cursor-pointer">
+          관리자 추가하기
+        </button>
+      </div>
+
+    </div>
 
     <div class="overflow-hidden border border-gray-200 rounded-[20px] " style="border: 1px solid #ECEFF2">
       <table class="table-auto min-w-full">
@@ -106,7 +143,6 @@ const onChange = (pageNumber: number) => {
                 <path d="M13 6L16 9" stroke="#A2A5AA" stroke-width="2"/>
               </svg>
             </div>
-
           </td>
         </tr>
         </tbody>
@@ -114,10 +150,13 @@ const onChange = (pageNumber: number) => {
     </div>
   </div>
 
-  <div>
-    <a-pagination v-model:current="current1" show-quick-jumper :total="500" @change="onChange" />
+  <div class="mt-[32px]">
+    <a-pagination v-model:current="current1" :total="200" @change="onChange" :showSizeChanger="false"
+                  :showTitle="true"/>
   </div>
 
+
+  <FormAdmin/>
 
 </template>
 

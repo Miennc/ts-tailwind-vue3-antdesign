@@ -4,9 +4,10 @@ import {demoServices} from "@/services/demoServices";
 import {computed, onBeforeMount, onMounted, ref, watch} from "vue";
 import iconClose from '@/assets/images/cms/account/admin/icon_close.svg'
 import FormAdmin from "@/components/form/cms/account/FormAdmin.vue";
+import {adminStore} from "@/stores/cms/account/admin.store.ts";
 
+const storeAdmin = adminStore();
 const current1 = ref<number>(1);
-const openModalAddAdmin = ref<boolean>(false);
 
 const addDemo = async () => {
   const newData: DataAdd = {
@@ -20,11 +21,9 @@ const onChange = (pageNumber: number) => {
   console.log('Page: ', pageNumber);
 };
 
-
 const showModalAddAdmin = () => {
-  openModalAddAdmin.value = true;
-}
-
+  storeAdmin.setOpenModalAddAdmin(true);
+};
 
 
 </script>
@@ -144,7 +143,6 @@ const showModalAddAdmin = () => {
                 <path d="M13 6L16 9" stroke="#A2A5AA" stroke-width="2"/>
               </svg>
             </div>
-
           </td>
         </tr>
         </tbody>
@@ -156,7 +154,6 @@ const showModalAddAdmin = () => {
     <a-pagination v-model:current="current1" :total="200" @change="onChange" :showSizeChanger="false"
                   :showTitle="true"/>
   </div>
-
 
 
   <FormAdmin/>
