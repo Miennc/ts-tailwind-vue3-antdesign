@@ -72,7 +72,7 @@ const showModalAddAdmin = () => {
 
     <div class="overflow-hidden border border-gray-200 rounded-[20px] " style="border: 1px solid #ECEFF2">
       <table class="table-auto min-w-full">
-        <thead>
+        <thead class="bg-[#F6F9FC]">
         <tr>
           <th
               class="px-[10px] py-4 text-left text-sm  font-medium text-[#6E6F73] font-[500] text-[12px] "
