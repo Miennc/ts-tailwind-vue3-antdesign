@@ -1,7 +1,9 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import HomeView from '@/views/HomeView.vue'
+import HomeView from '@/views/cms/HomeView.vue'
 import AdminLayout from '@/layouts/AdminLayout.vue'
 import Login from '@/views/authen/Login.vue'
+import Admin from '@/views/cms/account/Admin.vue'
+import User from '@/views/cms/account/User.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,14 +14,20 @@ const router = createRouter({
             component: Login,
         },
         {
-            path: '/home',
-            name: 'home',
+            path: '/account',
+            name: 'account',
             component: AdminLayout,
             children: [
                 {
                     path: '',
-                    name: 'DashBoardManagement',
-                    component: HomeView,
+                    name: 'admin',
+                    component: Admin,
+                    meta: {child: true},
+                },
+                {
+                    path: '',
+                    name: 'user',
+                    component: User,
                     meta: {child: true},
                 }
             ]

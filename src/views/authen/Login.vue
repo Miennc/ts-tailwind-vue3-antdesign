@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto h-screen flex justify-center items-center">
+  <div class="container mx-auto h-screen flex justify-center items-center ">
     <div class="w-[727px] h-[543px] bg-[#ffffff]">
       <div>
         <div class="w-full flex justify-center pt-[83px]">
@@ -9,8 +9,10 @@
           <div class="w-full px-[200px] ">
             <div class="h-[63px] w-full  relative">
               <input
-                  class="w-full rounded-[8px] h-full outline-none border border-[#CCCFD3] pl-[56px] pt-[29px] placeholder:font-[500] placeholder:text-[#A1A5AA] placeholder:text-[16px]"
-                  type="text" id="input1" name="input1" placeholder="bee@beestation.com"/>
+                  class="w-full rounded-[8px] h-full outline-none  pl-[56px] pt-[29px] placeholder:font-[500] placeholder:text-[#A1A5AA] placeholder:text-[16px]"
+                  style="border: 1px solid #CCCFD3;"
+                  type="text" id="input1" name="input1" placeholder="bee@beestation.com"
+              />
               <div class="absolute left-[19px] top-5">
                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -29,7 +31,9 @@
             <div class="h-[63px] w-full mt-[24px] mb-[60px] relative">
               <input
                   class="w-full rounded-[8px] h-full outline-none border border-[#CCCFD3] pl-[56px] pt-[29px] placeholder:font-[500] placeholder:text-[#A1A5AA] placeholder:text-[16px]"
-                  type="password" id="input1" name="input1" placeholder="• • • • • • • •"/>
+                  type="password" id="input1" name="input1" placeholder="• • • • • • • •"
+                  style="border: 1px solid #CCCFD3;"
+              />
               <div class="absolute left-[19px] top-5">
                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path

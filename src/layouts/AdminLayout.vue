@@ -3,6 +3,8 @@ import {MenuUnfoldOutlined, MenuFoldOutlined} from "@ant-design/icons-vue";
 import {computed, onBeforeMount, onMounted, ref, watch} from "vue";
 import {useRoute, useRouter} from "vue-router";
 import Dropdown from "@/components/ui/Dropdown.vue"
+import subMenu1 from "@/assets/images/sidebar/sub-menu1.svg";
+import subMenu2 from "@/assets/images/sidebar/sub-menu2.svg";
 
 const router = useRouter();
 const route = useRoute();
@@ -19,16 +21,45 @@ const dataSliderBar = ref<any[]>([
     children: [],
   },
   {
-    subKey: "/DashBoardManagement",
-    name: "DashBoardManagement",
+    subKey: "/account",
+    name: "계정 관리",
+    icon: subMenu1,
     children: [
       {
-        key: "/geger",
-        name: "내부직원 계정관리",
+        key: "",
+        name: "관리자",
       },
       {
-        key: "/bgbg",
-        name: "외부 계정관리",
+        key: "account/user",
+        name: "사용자",
+      },
+    ],
+  },
+
+  {
+    subKey: "/otherFeatures",
+    name: "그 외 기능",
+    icon: subMenu2,
+    children: [
+      {
+        key: "otherFeatures/station",
+        name: "스테이션 관리",
+      },
+      {
+        key: "otherFeatures/advertise",
+        name: "광고 관리",
+      },
+      {
+        key: "otherFeatures/turnover",
+        name: "매출 관리",
+      },
+      {
+        key: "otherFeatures/QnA",
+        name: "문의 관리",
+      },
+      {
+        key: "otherFeatures/notice",
+        name: "공지사항 관리",
       },
     ],
   },
@@ -116,10 +147,20 @@ watch(
               class="bg-[#1D223E] text-[#FFFFFF]"
           >
             <a-menu-item v-if="!item.children.length" :key="item.key">
-              <span>{{ item.name }}</span>
+              <span>
+          {{ item.name }}
+              </span>
             </a-menu-item>
             <a-sub-menu v-else :key="item.subKey">
-              <template #title>{{ item.name }}</template>
+              <template #title>
+                <div class=" flex gap-x-[8px] justify-start items-center">
+                  <img :src="item.icon" alt="">
+                  <div>
+                    {{ item.name }}
+                  </div>
+                </div>
+
+              </template>
               <a-menu-item
                   class="text-[#FFFFFF]"
                   v-for="childItem in item.children"
@@ -134,51 +175,52 @@ watch(
       </a-menu>
     </a-layout-sider>
 
-    <a-layout class="admin_layout_content">
-      <a-layout-header
-          class="flex items-center justify-between"
-          style="background: #f9fafe; padding: 0"
-      >
-        <div class="close_open_nav ml-[15px]">
-          <menu-unfold-outlined
-              v-if="collapsed"
-              class="trigger"
-              @click="() => (collapsed = !collapsed)"
-          />
-          <menu-fold-outlined
-              v-else
-              class="trigger"
-              @click="() => (collapsed = !collapsed)"
-          />
-        </div>
+    <a-layout class="admin_layout_content ">
 
-        <div class="px-[1rem]">
-          <a-dropdown>
-            <a class="ant-dropdown-link" @click.prevent>
-              <div class="h-[30px] w-[30px] overflow-hidden rounded-full">
-                <img
-                    src="https://i.pinimg.com/236x/a3/80/4b/a3804bc50f60557bd48f7bcc53df24ce.jpg"
-                    alt="logo"
-                    class=" object-cover"
-                />
-              </div>
-            </a>
-            <template #overlay>
-              <a-menu>
-                <a-menu-item>
-                  <div>프로필</div>
-                </a-menu-item>
-                <a-menu-item>
-                  <div @click="logout">로그아웃</div>
-                </a-menu-item>
-              </a-menu>
-            </template>
-          </a-dropdown>
-        </div>
-      </a-layout-header>
+      <!--      <a-layout-header-->
+      <!--          class="flex items-center  justify-between"-->
+      <!--          style="background: red;"-->
+      <!--      >-->
+      <!--        <div class="close_open_nav ">-->
+      <!--          <menu-unfold-outlined-->
+      <!--              v-if="collapsed"-->
+      <!--              class="trigger"-->
+      <!--              @click="() => (collapsed = !collapsed)"-->
+      <!--          />-->
+      <!--          <menu-fold-outlined-->
+      <!--              v-else-->
+      <!--              class="trigger"-->
+      <!--              @click="() => (collapsed = !collapsed)"-->
+      <!--          />-->
+      <!--        </div>-->
 
-      <a-layout-content
-      >
+      <!--        <div >-->
+      <!--          <a-dropdown>-->
+      <!--            <a class="ant-dropdown-link" @click.prevent>-->
+      <!--              <div class="h-[30px] w-[30px] overflow-hidden rounded-full">-->
+      <!--                <img-->
+      <!--                    src="https://i.pinimg.com/236x/a3/80/4b/a3804bc50f60557bd48f7bcc53df24ce.jpg"-->
+      <!--                    alt="logo"-->
+      <!--                    class=" object-cover"-->
+      <!--                />-->
+      <!--              </div>-->
+      <!--            </a>-->
+      <!--            <template #overlay>-->
+      <!--              <a-menu>-->
+      <!--                <a-menu-item>-->
+      <!--                  <div>프로필</div>-->
+      <!--                </a-menu-item>-->
+      <!--                <a-menu-item>-->
+      <!--                  <div @click="logout">로그아웃</div>-->
+      <!--                </a-menu-item>-->
+      <!--              </a-menu>-->
+      <!--            </template>-->
+      <!--          </a-dropdown>-->
+      <!--        </div>-->
+      <!--      </a-layout-header>-->
+
+      <a-layout-content class="bg-[#FFFFFF] px-[30px]">
+
         <router-view/>
       </a-layout-content>
     </a-layout>
@@ -218,7 +260,7 @@ watch(
 
 /* Nền khi menu item được kích hoạt */
 .ant-menu-item-selected {
-  background-color: #525ead  !important;
+  background-color: #525ead !important;
   color: #FFFFFF !important; /* Màu sắc chữ khi kích hoạt */
 }
 
