@@ -79,21 +79,21 @@ const showModalAddAdmin = () => {
               scope="col"
               style="border-left: 1px solid #ECEFF2"
           >
-            NO
+            이름
           </th>
           <th
               class="px-[10px] py-4 text-left text-sm  font-medium text-[#6E6F73] font-[500] text-[12px]"
               scope="col"
               style="border-left: 1px solid #ECEFF2"
           >
-            NO
+            이메일
           </th>
           <th
               class="px-[10px] py-4 text-left text-sm  font-medium text-[#6E6F73] font-[500] text-[12px]"
               scope="col"
               style="border-left: 1px solid #ECEFF2"
           >
-            NO
+            전화번호
           </th>
           <th
               class="px-[10px] py-4 text-left text-sm  font-medium text-[#6E6F73] font-[500] text-[12px]"
@@ -113,19 +113,19 @@ const showModalAddAdmin = () => {
               style="border: 1px solid #ECEFF2"
           >
             <!--                {{ totalElements - 10 * (currentPage - 1) - indexDevice }}-->
-            vfvf
+            김현지
           </td>
           <td
               class="whitespace-nowrap  px-[10px] py-[20px] text-sm font-medium text-[#1E1E1E] font-[500] text-[14px]"
               style="border: 1px solid #ECEFF2"
           >
-            vfvf
+            loe@leolap.com
           </td>
           <td
               class="whitespace-nowrap  px-[10px] py-[20px] text-sm font-medium text-[#1E1E1E] font-[500] text-[14px]"
               style="border: 1px solid #ECEFF2"
           >
-            vfvf
+            010-0003-0303
           </td>
           <td
               class="whitespace-nowrap cursor-pointer  px-[20px] py-[20px] text-sm font-medium text-[#1E1E1E] font-[500] text-[14px]"
