@@ -5,6 +5,7 @@ import {computed, onBeforeMount, onMounted, ref, watch} from "vue";
 import iconClose from '@/assets/images/cms/account/admin/icon_close.svg'
 import FormAdmin from "@/components/form/cms/account/FormAdmin.vue";
 import {adminStore} from "@/stores/cms/account/admin.store.ts";
+import FormDelAdmin from "@/components/form/cms/account/FormDelAdmin.vue";
 
 const storeAdmin = adminStore();
 const current1 = ref<number>(1);
@@ -22,7 +23,13 @@ const onChange = (pageNumber: number) => {
 };
 
 const showModalAddAdmin = () => {
+  storeAdmin.setIdAdmin(0);
   storeAdmin.setOpenModalAddAdmin(true);
+};
+
+const modalEditAdmin = (id: number) => {
+  storeAdmin.setOpenModalAddAdmin(true);
+  storeAdmin.setIdAdmin(id);
 };
 
 
@@ -128,6 +135,7 @@ const showModalAddAdmin = () => {
             010-0003-0303
           </td>
           <td
+              @click="modalEditAdmin(2)"
               class="whitespace-nowrap cursor-pointer  px-[20px] py-[20px] text-sm font-medium text-[#1E1E1E] font-[500] text-[14px]"
               style="border: 1px solid #ECEFF2"
           >
@@ -157,6 +165,7 @@ const showModalAddAdmin = () => {
 
 
   <FormAdmin/>
+  <FormDelAdmin/>
 
 </template>
 
